@@ -2,53 +2,62 @@
 
 <ul>
   {{#each burgers}}
-    <li>
-      <p>
-        {{this.id}}. {{this.burger_name}}
+  <li>
+    <p>
+      {{this.id}}. {{this.burger_name}}
 
-        <button data-burgerid="{{this.id}}" class="devourBurger" value="{{this.id}}{{this.burger_name}}">Devour</button>
-      </p>
-    </li>
+      <button data-burgerid="{{this.id}}" class="devourBurger" value="{{this.id}}{{this.burger_name}}">Devour</button>
+    </p>
+  </li>
   {{/each}}
 </ul>
 
 <h2>Place Your Order Here!</h2>
-<form id = "placeOrder" class ="button-size">
-<textarea type="text" name = "burger_name"></textarea>
-<button type= "submit">Place Order!</button>
+<form id="placeOrder" class="button-size">
+  <textarea type="text" name="burger_name"></textarea>
+  <button type="submit">Place Order!</button>
 </form>
+
+<h2> Devoured orders!</h2>
+<div id="devouredList"></div>
 
 
 
 <script type="text/javascript">
 
 
-$("#placeOrder").on("submit",function(event){
-  event.preventDefault();
-  var newOrder = {
+  $("#placeOrder").on("submit", function (event) {
+    event.preventDefault();
+    var newOrder = {
       order: $("#placeOrder [name=burger_name]").val().trim()
     };
- $.ajax("/api/burgers", {
-   type : "POST",
-   data : newOrder
- }).then(function(){
-  
-   location.reload();
-   console.log("added a new order");
- })
-})
+    $.ajax("/api/burgers", {
+      type: "POST",
+      data: newOrder
+    }).then(function () {
+
+      location.reload();
+      console.log("added a new order");
+    })
+  })
 
 
-$(".devourBurger").on("click",function(){
-  var id = $(this).data("burgerid");
+  $(".devourBurger").on("click", function () {
 
-$.ajax("/api/" + id,{
-  type : "PUT"
-}).then(function(){
-  location.reload();
-  console.log("value changed to true")
-})
-})
+    var id = $(this).data("burgerid");
+    var devouredBurgers = $(this).val();
+    console.log(devouredBurgers);
+    var tagForDevoured = $("<p></p>").text(devouredBurgers);
+     $("devouredList").append(tagForDevoured);
+
+
+    $.ajax("/api/" + id, {
+      type: "PUT"
+    }).then(function () {
+      location.reload();
+      console.log("value changed to true")
+    })
+  })
 
 
 </script>
