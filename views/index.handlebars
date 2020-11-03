@@ -1,30 +1,62 @@
-<h1>burgers to eat</h1>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>How about some burgers!!</h1>
+  </div>
+</div>
 
-<ul>
-  {{#each burgers}}
-  <li>
-    <p>
-      {{this.id}}. {{this.burger_name}}
+<div class="container-fluid"></div>
+<div class="row">
+  <div class="col-4" style="width: 18rem;">
+    <h1>burgers to eat</h1>
+    <ul>
+      {{#each burgers}}
+      {{#unless devoured}}
+      <li>
+        <p>
+          {{this.id}}. {{this.burger_name}}
 
-      <button data-burgerid="{{this.id}}" class="devourBurger" value="{{this.id}}{{this.burger_name}}">Devour</button>
-    </p>
-  </li>
-  {{/each}}
-</ul>
+          <button data-burgerid="{{this.id}}" class="devourBurger"
+            value="{{this.id}}{{this.burger_name}}">Devour</button>
+        </p>
+      </li>
+      {{/unless}}
+      {{/each}}
+    </ul>
+  </div>
 
-<h2>Place Your Order Here!</h2>
-<form id="placeOrder" class="button-size">
-  <textarea type="text" name="burger_name"></textarea>
-  <button type="submit">Place Order!</button>
-</form>
+  <div class="col-4" style="width: 18rem;">
+    <h2>Place Your Order Here!</h2>
+    <form id="placeOrder" class="button-size">
+      <textarea type="text" name="burger_name"></textarea>
+      <button type="submit">Place Order!</button>
+    </form>
+  </div>
 
-<h2> Devoured orders!</h2>
-<div id="devouredList"></div>
+  <div class="col-4" style="width: 18rem;">
+    <h2> Devoured orders!</h2>
+    <ul>
+      {{#each burgers}}
+      {{#if devoured}}
+      <li>
+        <p>
+          {{this.id}}. {{this.burger_name}}
+        </p>
+      </li>
+      {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+
+</div>
+</div>
+
+
+
+
 
 
 
 <script type="text/javascript">
-
 
   $("#placeOrder").on("submit", function (event) {
     event.preventDefault();
@@ -48,7 +80,7 @@
     var devouredBurgers = $(this).val();
     console.log(devouredBurgers);
     var tagForDevoured = $("<p></p>").text(devouredBurgers);
-     $("devouredList").append(tagForDevoured);
+    $("devouredList").append(tagForDevoured);
 
 
     $.ajax("/api/" + id, {

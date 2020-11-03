@@ -1,8 +1,10 @@
+// this file here controls the query request and passes it to ORM files
+
 var orm = require("../config/orm.js");
 
 var burger = {
-    allTrue: function (cb) {
-        orm.all("burgers", 0, function (res) {
+    all: function (cb) {
+        orm.all("burgers", function (res) {
             cb(res);
         })
     },
@@ -21,17 +23,6 @@ var burger = {
 
 
 };
-
-
-
-
-
-
-
-
-
-
-
 
 
 module.exports = burger;

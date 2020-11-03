@@ -4,12 +4,13 @@ var router = express.Router();
 var mysql = require("mysql");
 const burger = require("../models/burger.js");
 
-// import burger.js file 
-var cat = require("../models/burger.js");
+// imported burger.js file 
+var burgers = require("../models/burger.js");
+
 
 // gets all the matching value from
 router.get("/", function (req, res) {
-  burger.allTrue(function (data) {
+  burger.all(function (data) {
     var burgersObj = {
       burgers: data
     }
@@ -34,10 +35,6 @@ router.put("/api/:id", function (req, res) {
     res.status(200).end()
   })
 });
-
-
-
-
 
 
 module.exports = router;
