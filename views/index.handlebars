@@ -6,7 +6,7 @@
       <p>
         {{this.id}}. {{this.burger_name}}
 
-        <button data-burgerid="{{this.id}}" class="devourburger">Devour</button>
+        <button data-burgerid="{{this.id}}" class="devourBurger" value="{{this.id}}{{this.burger_name}}">Devour</button>
       </p>
     </li>
   {{/each}}
@@ -18,3 +18,37 @@
 <button type= "submit">Place Order!</button>
 </form>
 
+
+
+<script type="text/javascript">
+
+
+$("#placeOrder").on("submit",function(event){
+  event.preventDefault();
+  var newOrder = {
+      order: $("#placeOrder [name=burger_name]").val().trim()
+    };
+ $.ajax("/api/burgers", {
+   type : "POST",
+   data : newOrder
+ }).then(function(){
+  
+   location.reload();
+   console.log("added a new order");
+ })
+})
+
+
+$(".devourBurger").on("click",function(){
+  var id = $(this).data("burgerid");
+
+$.ajax("/api/" + id,{
+  type : "PUT"
+}).then(function(){
+  location.reload();
+  console.log("value changed to true")
+})
+})
+
+
+</script>
