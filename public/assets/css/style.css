@@ -1,4 +1,7 @@
-body{
-background-image: url("assets/images/pexels-samfotograffo-3052362.jpg");
-opacity : 0.3;
+.jumbotron{
+background-color: #8c9aa8;
+};
+
+.container-fluid{
+    background-color: rgb(194, 211, 160);
 }
