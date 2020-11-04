@@ -1,3 +1,4 @@
+
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1>How about some burgers!!</h1>
@@ -7,7 +8,7 @@
 <div class="container-fluid"></div>
 <div class="row">
   <div class="col-4" style="width: 18rem;">
-    <h1>burgers to eat</h1>
+    <h1>Grab as many as you want</h1>
     <ul>
       {{#each burgers}}
       {{#unless devoured}}
@@ -15,8 +16,7 @@
         <p>
           {{this.id}}. {{this.burger_name}}
 
-          <button data-burgerid="{{this.id}}" class="devourBurger"
-            value="{{this.id}}{{this.burger_name}}">Devour</button>
+          <button data-burgerid="{{this.id}}" class="devourBurger">Devour</button>
         </p>
       </li>
       {{/unless}}
@@ -54,42 +54,6 @@
 
 
 
+  
 
 
-<script type="text/javascript">
-
-  $("#placeOrder").on("submit", function (event) {
-    event.preventDefault();
-    var newOrder = {
-      order: $("#placeOrder [name=burger_name]").val().trim()
-    };
-    $.ajax("/api/burgers", {
-      type: "POST",
-      data: newOrder
-    }).then(function () {
-
-      location.reload();
-      console.log("added a new order");
-    })
-  })
-
-
-  $(".devourBurger").on("click", function () {
-
-    var id = $(this).data("burgerid");
-    var devouredBurgers = $(this).val();
-    console.log(devouredBurgers);
-    var tagForDevoured = $("<p></p>").text(devouredBurgers);
-    $("devouredList").append(tagForDevoured);
-
-
-    $.ajax("/api/" + id, {
-      type: "PUT"
-    }).then(function () {
-      location.reload();
-      console.log("value changed to true")
-    })
-  })
-
-
-</script>
