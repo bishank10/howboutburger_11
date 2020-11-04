@@ -6,7 +6,7 @@ This app is called "howboutburger". In this app you can place your order for any
 
 
 ### operation :
-This app runs on node and is deployed through heroku. It uses mySql as a primary database. 
+This app runs on node and is deployed through heroku. It uses mySql as a primary database. To use the app you can simply clone it and run the command "npm install" on you terminal. this will install all the necessary dependencies and the app then you can launch your app. 
 
 
 ### Required command to install the program :
@@ -22,6 +22,6 @@ Developer : Bishank Bohara
 you can reach out to me via, email ON chandbishank@gmail.com
 
 ### App Images :
-![GitHub Logo](./public/assets/images/2020-11-03 (2).png)
-Format: ![Alt Text](url)
+![GitHub Logo](assets/images/2020-11-03 (2).png)
+Format: ![app Image](url)
 
