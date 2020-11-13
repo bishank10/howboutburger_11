@@ -22,5 +22,5 @@ Developer : Bishank Bohara
 you can reach out to me via, email ON chandbishank@gmail.com
 
 ### App Images :
-![how about burger](./public/assets/images/2020-11-03(2).png)
+![how about burger](./public/assets/images/screenshot.png)
 
