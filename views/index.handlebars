@@ -1,59 +1,52 @@
+<div class="main">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1>How about some burgers!!</h1>
+    </div>
+  </div>
 
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1>How about some burgers!!</h1>
+  <div class="container-fluid test" id="burger" >
+    <div class="row">
+      <div class="col-4" style="width: 18rem;">
+        <h1>Grab as many as you want</h1>
+        <ul>
+          {{#each burgers}}
+          {{#unless devoured}}
+          <li>
+            <p>
+              {{this.id}}. {{this.burger_name}}
+
+              <button data-burgerid="{{this.id}}" class="devourBurger">Devour</button>
+            </p>
+          </li>
+          {{/unless}}
+          {{/each}}
+        </ul>
+      </div>
+
+      <div class="col-4" style="width: 18rem;">
+        <h2>Place Your Order Here!</h2>
+        <form id="placeOrder" class="button-size">
+          <textarea type="text" name="burger_name"></textarea>
+          <button type="submit">Place Order!</button>
+        </form>
+      </div>
+
+      <div class="col-4" style="width: 18rem;">
+        <h2> Devoured orders!</h2>
+        <ul>
+          {{#each burgers}}
+          {{#if devoured}}
+          <li>
+            <p>
+              {{this.id}}. {{this.burger_name}}
+            </p>
+          </li>
+          {{/if}}
+          {{/each}}
+        </ul>
+      </div>
+
+    </div>
   </div>
 </div>
-
-<div class="container-fluid"></div>
-<div class="row">
-  <div class="col-4" style="width: 18rem;">
-    <h1>Grab as many as you want</h1>
-    <ul>
-      {{#each burgers}}
-      {{#unless devoured}}
-      <li>
-        <p>
-          {{this.id}}. {{this.burger_name}}
-
-          <button data-burgerid="{{this.id}}" class="devourBurger">Devour</button>
-        </p>
-      </li>
-      {{/unless}}
-      {{/each}}
-    </ul>
-  </div>
-
-  <div class="col-4" style="width: 18rem;">
-    <h2>Place Your Order Here!</h2>
-    <form id="placeOrder" class="button-size">
-      <textarea type="text" name="burger_name"></textarea>
-      <button type="submit">Place Order!</button>
-    </form>
-  </div>
-
-  <div class="col-4" style="width: 18rem;">
-    <h2> Devoured orders!</h2>
-    <ul>
-      {{#each burgers}}
-      {{#if devoured}}
-      <li>
-        <p>
-          {{this.id}}. {{this.burger_name}}
-        </p>
-      </li>
-      {{/if}}
-      {{/each}}
-    </ul>
-  </div>
-
-</div>
-</div>
-
-
-
-
-
-  
-
-

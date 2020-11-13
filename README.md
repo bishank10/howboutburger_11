@@ -22,6 +22,5 @@ Developer : Bishank Bohara
 you can reach out to me via, email ON chandbishank@gmail.com
 
 ### App Images :
-![GitHub Logo](assets/images/2020-11-03 (2).png)
-Format: ![app Image](url)
+![how about burger](./public/assets/images/2020-11-03(2).png)
 

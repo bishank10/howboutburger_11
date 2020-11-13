@@ -1,7 +1,7 @@
 .jumbotron{
-background-color: #8c9aa8;
+background-color: rgb(179, 28, 66);
 };
 
-.container-fluid{
-    background-color: rgb(194, 211, 160);
+#burger{
+    background-color: red;
 }
